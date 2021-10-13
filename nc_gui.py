@@ -26,13 +26,11 @@ frame.pack(padx=10, pady=10)
 ipLabel = Label(frame, text="IP:").grid(row=0, column=0)
 ip_entry = Entry(frame, width=30)
 ip_entry.grid(row=0, column=1)
-#ip_entry.insert(0, "ss.helloworldml.com")
 ip_entry.insert(0, "127.0.0.1")
 
 portLabel = Label(frame, text="PORT:").grid(row=1, column=0)
 port_entry = Entry(frame, width=30, text='80')
 port_entry.grid(row=1, column=1)
-#port_entry.insert(0, "443")
 port_entry.insert(0, "8888")
 
 # result var
@@ -74,7 +72,7 @@ def subprocess_callback(command):
         proc.kill()
         outs, errs = proc.communicate()
     result = "STDOUT:{}\t" \
-    "STDERR:{}\n".format(outs, errs)
+    "STDERR:{}\n".format(str(outs), str(errs))
     return result
 
 # non-blocking test function
@@ -113,9 +111,8 @@ submit_btn.grid(row=2, column=0, columnspan=2, pady=10, padx=10, ipadx=100)
 
 
 # create text
-outputText = Text(root, height=20,
-              width=100,
-              bg="light yellow")
+#outputText = Text(root, height=20, width=100, bg="light yellow")
+outputText = Text(root, bg="light yellow")
 outputText.pack()
 
 
